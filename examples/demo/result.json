@@ -1,0 +1,326 @@
+{
+  "manifest": {
+    "platform": "示例平台",
+    "site": "US",
+    "category": "Home & Kitchen / Storage",
+    "currency": "USD",
+    "timezone": "America/Los_Angeles",
+    "objective": "控制亏损 SKU，同时寻找可持续增长空间",
+    "business_context": {
+      "target_roas": 3,
+      "notes": "现金流优先；SKU-A 库存充足，SKU-B 补货需确认。演示备注，非真实企业信息。"
+    },
+    "attribution": {
+      "label": "演示数据：点击后 7 天归因，按广告平台报表日期汇总"
+    },
+    "periods": {
+      "previous": {
+        "start": "2026-11-05",
+        "end": "2026-11-11"
+      },
+      "current": {
+        "start": "2026-11-12",
+        "end": "2026-11-18"
+      }
+    },
+    "min_clicks_for_directional": 30
+  },
+  "current": {
+    "impressions": 21350,
+    "clicks": 200,
+    "spend": 266,
+    "orders": 21,
+    "ad_sales": 750,
+    "store_sales": 1120,
+    "ctr": 0.00936768149882904,
+    "cpc": 1.33,
+    "cvr": 0.105,
+    "aov": 35.714285714285715,
+    "roas": 2.819548872180451,
+    "acos": 0.3546666666666667,
+    "tacos": 0.2375,
+    "contribution": 47.5,
+    "economics_missing": []
+  },
+  "previous": {
+    "impressions": 18550,
+    "clicks": 180,
+    "spend": 200,
+    "orders": 22,
+    "ad_sales": 760,
+    "store_sales": 1120,
+    "ctr": 0.009703504043126684,
+    "cpc": 1.1111111111111112,
+    "cvr": 0.12222222222222222,
+    "aov": 34.54545454545455,
+    "roas": 3.8,
+    "acos": 0.2631578947368421,
+    "tacos": 0.17857142857142858,
+    "contribution": 122,
+    "economics_missing": []
+  },
+  "drivers": [
+    {
+      "label": "点击成本",
+      "value": -0.18
+    },
+    {
+      "label": "点击转化率",
+      "value": -0.152
+    },
+    {
+      "label": "广告客单价",
+      "value": 0.033
+    }
+  ],
+  "campaign": [
+    {
+      "name": "Storage-Core",
+      "current": {
+        "impressions": 12250,
+        "clicks": 110,
+        "spend": 176,
+        "orders": 9,
+        "ad_sales": 270,
+        "store_sales": null,
+        "ctr": 0.008979591836734694,
+        "cpc": 1.6,
+        "cvr": 0.08181818181818182,
+        "aov": 30,
+        "roas": 1.5340909090909092,
+        "acos": 0.6518518518518519,
+        "tacos": null,
+        "contribution": -54.5,
+        "economics_missing": []
+      },
+      "previous": {
+        "impressions": 10500,
+        "clicks": 100,
+        "spend": 120,
+        "orders": 12,
+        "ad_sales": 360,
+        "store_sales": null,
+        "ctr": 0.009523809523809525,
+        "cpc": 1.2,
+        "cvr": 0.12,
+        "aov": 30,
+        "roas": 3,
+        "acos": 0.3333333333333333,
+        "tacos": null,
+        "contribution": 42,
+        "economics_missing": []
+      }
+    },
+    {
+      "name": "Storage-Growth",
+      "current": {
+        "impressions": 9100,
+        "clicks": 90,
+        "spend": 90,
+        "orders": 12,
+        "ad_sales": 480,
+        "store_sales": null,
+        "ctr": 0.00989010989010989,
+        "cpc": 1,
+        "cvr": 0.13333333333333333,
+        "aov": 40,
+        "roas": 5.333333333333333,
+        "acos": 0.1875,
+        "tacos": null,
+        "contribution": 102,
+        "economics_missing": []
+      },
+      "previous": {
+        "impressions": 8050,
+        "clicks": 80,
+        "spend": 80,
+        "orders": 10,
+        "ad_sales": 400,
+        "store_sales": null,
+        "ctr": 0.009937888198757764,
+        "cpc": 1,
+        "cvr": 0.125,
+        "aov": 40,
+        "roas": 5,
+        "acos": 0.2,
+        "tacos": null,
+        "contribution": 80,
+        "economics_missing": []
+      }
+    }
+  ],
+  "sku": [
+    {
+      "name": "SKU-A",
+      "current": {
+        "impressions": 12250,
+        "clicks": 110,
+        "spend": 176,
+        "orders": 9,
+        "ad_sales": 270,
+        "store_sales": 500,
+        "ctr": 0.008979591836734694,
+        "cpc": 1.6,
+        "cvr": 0.08181818181818182,
+        "aov": 30,
+        "roas": 1.5340909090909092,
+        "acos": 0.6518518518518519,
+        "tacos": 0.352,
+        "contribution": -54.5,
+        "economics_missing": []
+      },
+      "previous": {
+        "impressions": 10500,
+        "clicks": 100,
+        "spend": 120,
+        "orders": 12,
+        "ad_sales": 360,
+        "store_sales": 550,
+        "ctr": 0.009523809523809525,
+        "cpc": 1.2,
+        "cvr": 0.12,
+        "aov": 30,
+        "roas": 3,
+        "acos": 0.3333333333333333,
+        "tacos": 0.21818181818181817,
+        "contribution": 42,
+        "economics_missing": []
+      }
+    },
+    {
+      "name": "SKU-B",
+      "current": {
+        "impressions": 9100,
+        "clicks": 90,
+        "spend": 90,
+        "orders": 12,
+        "ad_sales": 480,
+        "store_sales": 620,
+        "ctr": 0.00989010989010989,
+        "cpc": 1,
+        "cvr": 0.13333333333333333,
+        "aov": 40,
+        "roas": 5.333333333333333,
+        "acos": 0.1875,
+        "tacos": 0.14516129032258066,
+        "contribution": 102,
+        "economics_missing": []
+      },
+      "previous": {
+        "impressions": 8050,
+        "clicks": 80,
+        "spend": 80,
+        "orders": 10,
+        "ad_sales": 400,
+        "store_sales": 570,
+        "ctr": 0.009937888198757764,
+        "cpc": 1,
+        "cvr": 0.125,
+        "aov": 40,
+        "roas": 5,
+        "acos": 0.2,
+        "tacos": 0.14035087719298245,
+        "contribution": 80,
+        "economics_missing": []
+      }
+    }
+  ],
+  "keyword": [
+    {
+      "name": "storage bins",
+      "current": {
+        "impressions": 12250,
+        "clicks": 110,
+        "spend": 176,
+        "orders": 9,
+        "ad_sales": 270,
+        "store_sales": null,
+        "ctr": 0.008979591836734694,
+        "cpc": 1.6,
+        "cvr": 0.08181818181818182,
+        "aov": 30,
+        "roas": 1.5340909090909092,
+        "acos": 0.6518518518518519,
+        "tacos": null,
+        "contribution": -54.5,
+        "economics_missing": []
+      },
+      "previous": {
+        "impressions": 10500,
+        "clicks": 100,
+        "spend": 120,
+        "orders": 12,
+        "ad_sales": 360,
+        "store_sales": null,
+        "ctr": 0.009523809523809525,
+        "cpc": 1.2,
+        "cvr": 0.12,
+        "aov": 30,
+        "roas": 3,
+        "acos": 0.3333333333333333,
+        "tacos": null,
+        "contribution": 42,
+        "economics_missing": []
+      }
+    },
+    {
+      "name": "closet organizer",
+      "current": {
+        "impressions": 9100,
+        "clicks": 90,
+        "spend": 90,
+        "orders": 12,
+        "ad_sales": 480,
+        "store_sales": null,
+        "ctr": 0.00989010989010989,
+        "cpc": 1,
+        "cvr": 0.13333333333333333,
+        "aov": 40,
+        "roas": 5.333333333333333,
+        "acos": 0.1875,
+        "tacos": null,
+        "contribution": 102,
+        "economics_missing": []
+      },
+      "previous": {
+        "impressions": 8050,
+        "clicks": 80,
+        "spend": 80,
+        "orders": 10,
+        "ad_sales": 400,
+        "store_sales": null,
+        "ctr": 0.009937888198757764,
+        "cpc": 1,
+        "cvr": 0.125,
+        "aov": 40,
+        "roas": 5,
+        "acos": 0.2,
+        "tacos": null,
+        "contribution": 80,
+        "economics_missing": []
+      }
+    }
+  ],
+  "quality": [],
+  "source_counts": {
+    "ads": 28,
+    "store": 28,
+    "economics": 2
+  },
+  "actions": [
+    {
+      "priority": "高",
+      "title": "复核 SKU-A 的归因亏损",
+      "evidence": "本期花费 176.00 USD，归因贡献估算 -54.50 USD。",
+      "action": "检查该 SKU 的搜索词、竞价、商品页和成本结构；先小范围降低低效流量。",
+      "verify": "同口径跟踪该 SKU 的归因贡献、订单量及店铺销售。"
+    },
+    {
+      "priority": "高",
+      "title": "拆解广告回报下降",
+      "evidence": "ROAS 从 3.80 降至 2.82；最大对数变化项为点击成本；企业目标为 3.00。",
+      "action": "检查竞价、投放位置和竞争加剧的搜索词。",
+      "verify": "保持其他主要条件稳定，按相同归因窗口复盘下一周期。"
+    }
+  ]
+}

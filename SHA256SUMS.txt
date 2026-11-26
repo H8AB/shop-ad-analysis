@@ -1,0 +1,4 @@
+e5c26b066c4c5c57fa0791d0839c2fdd0951301820f2d37235b98314c0a51d96  dist/shop-ad-analysis-agent.zip
+fcea06023ad75f4677a718edbd1d426a420942da57b8415e2caecba187a2d0e2  dist/shop-ad-analysis-workbuddy.zip
+c3a9ffac66737bfc8b4609e8d5c34a95c3507635879524d7756cbbbf0c6c4551  web/ad-analysis.html
+48051398cb6457ef842ceec7fbbfbd676acc7d727b18019007ef808c7bfc0ae1  examples/demo/report.html

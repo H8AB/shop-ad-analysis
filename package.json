@@ -1,0 +1,13 @@
+{
+  "name": "shop-ad-analysis-skill",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portable ecommerce advertising analysis Agent Skill and offline HTML report generator",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "demo": "node tools/make-demo.js && node skills/shop-ad-analysis/scripts/analyze.js --manifest examples/demo/manifest.json --ads examples/demo/ads.csv --store examples/demo/store.csv --economics examples/demo/economics.csv --out examples/demo/report.html --json examples/demo/result.json",
+    "build": "node tools/build-web.js && node tools/package.js"
+  },
+  "engines": {"node": ">=18"},
+  "license": "MIT"
+}

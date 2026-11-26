@@ -1,0 +1,16 @@
+name: verify
+on:
+  push:
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm test
+      - run: npm run demo
+      - run: npm run build
+      - run: git diff --exit-code -- examples/demo/report.html examples/demo/result.json web/ad-analysis.html skills/shop-ad-analysis/assets/ad-analysis.html

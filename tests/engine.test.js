@@ -1,0 +1,20 @@
+'use strict';
+const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
+const {parseCsv,analyze,renderHtml}=require('../skills/shop-ad-analysis/scripts/engine.js');
+const root=path.resolve(__dirname,'../examples/demo');
+const input=()=>({manifest:JSON.parse(fs.readFileSync(path.join(root,'manifest.json'),'utf8')),ads:parseCsv(fs.readFileSync(path.join(root,'ads.csv'),'utf8')),store:parseCsv(fs.readFileSync(path.join(root,'store.csv'),'utf8')),economics:parseCsv(fs.readFileSync(path.join(root,'economics.csv'),'utf8'))});
+test('demo reconciles totals, decomposition, and SKU profit',()=>{
+  const r=analyze(input());
+  assert.equal(r.current.spend,266);assert.equal(r.current.ad_sales,750);assert.equal(r.current.orders,21);
+  assert.equal(r.previous.spend,200);assert.equal(r.previous.ad_sales,760);
+  assert.equal(r.current.contribution,47.5);
+  assert.equal(r.sku.find(x=>x.name==='SKU-A').current.contribution,-54.5);
+  assert.ok(Math.abs(r.drivers.reduce((n,x)=>n+x.value,0)-Math.log(r.current.roas/r.previous.roas))<0.002);
+  assert.ok(r.actions.some(x=>x.title.includes('SKU-A')));
+});
+test('missing economics suppresses aggregate contribution',()=>{const i=input();i.economics=[];const r=analyze(i);assert.equal(r.current.contribution,null);assert.ok(r.quality.some(x=>x.includes('成本率')));});
+test('store duplicate cannot inflate TACOS denominator',()=>{const i=input();i.store.push({...i.store[0]});assert.throws(()=>analyze(i),/重复/);});
+test('exact ad duplicate cannot inflate ad totals',()=>{const i=input();i.ads.push({...i.ads[0]});assert.throws(()=>analyze(i),/重复/);});
+test('partial store data suppresses TACOS',()=>{const i=input();i.store.pop();const r=analyze(i);assert.equal(r.current.tacos,null);assert.ok(r.quality.some(x=>x.includes('不计算 TACOS')));});
+test('invalid calendar date is rejected',()=>{const i=input();i.manifest.periods.current.end='2026-11-31';assert.throws(()=>analyze(i),/日期范围无效/);});
+test('CSV quotes and report HTML escaping',()=>{assert.equal(parseCsv('a,b\n"x,y","z""q"\n')[0].a,'x,y');const i=input();i.manifest.category='<script>alert(1)</script>';const html=renderHtml(analyze(i));assert.ok(!html.includes('<script>alert(1)</script>'));assert.ok(html.includes('&lt;script&gt;'));});
