@@ -9,8 +9,13 @@ test('demo reconciles totals, decomposition, and SKU profit',()=>{
   assert.equal(r.previous.spend,200);assert.equal(r.previous.ad_sales,760);
   assert.equal(r.current.contribution,47.5);
   assert.equal(r.sku.find(x=>x.name==='SKU-A').current.contribution,-54.5);
+  assert.ok(Math.abs(r.sku.find(x=>x.name==='SKU-A').break_even_roas-1/0.45)<1e-10);
   assert.ok(Math.abs(r.drivers.reduce((n,x)=>n+x.value,0)-Math.log(r.current.roas/r.previous.roas))<0.002);
   assert.ok(r.actions.some(x=>x.title.includes('SKU-A')));
+  assert.ok(r.actions.every(x=>x.owner&&x.stop));
+  const html=renderHtml(r);
+  assert.match(html,/Advertising funnel/);assert.match(html,/ROAS identity/);assert.match(html,/Suggested owner/);
+  assert.match(html,/1\.53 \/ 2\.22/);
 });
 test('missing economics suppresses aggregate contribution',()=>{const i=input();i.economics=[];const r=analyze(i);assert.equal(r.current.contribution,null);assert.ok(r.quality.some(x=>x.includes('Missing SKU cost rates')));});
 test('store duplicate cannot inflate TACOS denominator',()=>{const i=input();i.store.push({...i.store[0]});assert.throws(()=>analyze(i),/duplicates a date/);});

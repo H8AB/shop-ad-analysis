@@ -190,7 +190,9 @@
         "tacos": 0.21818181818181817,
         "contribution": 42,
         "economics_missing": []
-      }
+      },
+      "variable_cost_rate": 0.55,
+      "break_even_roas": 2.2222222222222223
     },
     {
       "name": "SKU-B",
@@ -227,7 +229,9 @@
         "tacos": 0.14035087719298245,
         "contribution": 80,
         "economics_missing": []
-      }
+      },
+      "variable_cost_rate": 0.6,
+      "break_even_roas": 2.5
     }
   ],
   "keyword": [
@@ -314,18 +318,24 @@
   },
   "actions": [
     {
+      "kind": "sku_loss",
       "priority": "high",
       "title": "Review SKU-A attributed loss",
       "evidence": "Spend 176.00 USD; estimated attributed contribution -54.50 USD.",
       "action": "Check search terms, bids, listing, and cost structure; reduce inefficient traffic in a limited test.",
-      "verify": "Track this SKU’s attributed contribution, orders, and store sales on the same basis."
+      "verify": "Track this SKU’s attributed contribution, orders, and store sales on the same basis.",
+      "owner": "Paid media + SKU owner",
+      "stop": "Stop or revise the SKU test if contribution fails to improve in the next comparable period."
     },
     {
+      "kind": "roas_decline",
       "priority": "high",
       "title": "Diagnose the ROAS decline",
       "evidence": "ROAS fell from 3.80 to 2.82; largest log-change component: Cost per click; company target 3.00.",
       "action": "Review bids, placements, and search terms with rising competition.",
-      "verify": "Keep major conditions stable and review the next period using the same attribution window."
+      "verify": "Keep major conditions stable and review the next period using the same attribution window.",
+      "owner": "Paid media + analytics",
+      "stop": "Reconsider if ROAS remains below the company target and contribution worsens; allow for attribution lag."
     }
   ]
 }

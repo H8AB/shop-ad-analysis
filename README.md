@@ -50,4 +50,4 @@ npm run build
 
 The sample data is synthetic. Never commit real ad exports, private cost data, credentials, or business targets to a public repository. The browser tool processes selected files locally and has no upload endpoint. An AI host's handling of attached files is governed by that host's settings and terms.
 
-Version 1.1 accepts normalized CSV/JSON exports rather than direct marketplace API connections. Confirm attribution, currency, site, dates, and report grain before comparing platforms. The [input contract](skills/shop-ad-analysis/references/input-contract.md) defines the required fields. Code is MIT licensed.
+Version 1.2 adds a decision brief, advertising funnel, ROAS driver chart, SKU contribution and break-even proxy cards, and suggested review gates. It accepts normalized CSV/JSON exports rather than direct marketplace API connections. Confirm attribution, currency, site, dates, and report grain before comparing platforms. The [input contract](skills/shop-ad-analysis/references/input-contract.md) defines the required fields. Code is MIT licensed.

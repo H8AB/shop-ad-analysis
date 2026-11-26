@@ -4,7 +4,7 @@
 
 ## 1. Review the sample
 
-Open the [English HTML report](examples/demo/report.html) and read the [case study](examples/demo/CASE.md). A [Chinese report](examples/demo/report.zh-CN.html) and [Chinese case study](examples/demo/CASE.zh-CN.md) are also included. All figures are synthetic.
+Open the [English HTML report directly](https://h8ab.github.io/shop-ad-analysis/examples/demo/report.html) and read the [case study](examples/demo/CASE.md). An [optional Chinese report](https://h8ab.github.io/shop-ad-analysis/examples/demo/report.zh-CN.html) and [Chinese case study](examples/demo/CASE.zh-CN.md) are also included. All figures are synthetic.
 
 ## 2. Prepare input files
 
@@ -72,4 +72,4 @@ Add `--locale zh-CN --out report.zh-CN.html` for Chinese output. Missing `store.
 
 ## 7. Interpret decisions
 
-Read Data quality and scope before the executive summary and action list. Recommendations are hypotheses to test, not causal claims. Review attribution lag, price changes, promotions, stock, and unit-cost definitions before large bid or budget changes.
+Start with the decision brief, then read the funnel, ROAS components, and SKU cards alongside the source limits. The funnel bars use separate scales for impressions, clicks, and orders. The ROAS chart is an exact descriptive identity when its inputs are positive; it does not identify a cause. A SKU break-even ROAS proxy uses `1 / (1 − variable_cost_rate)` and excludes fixed costs and incrementality. Every action includes a suggested owner, verification step, and stop or reconsider condition. Review attribution lag, price changes, promotions, stock, and unit-cost definitions before large bid or budget changes.

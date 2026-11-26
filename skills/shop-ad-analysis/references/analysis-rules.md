@@ -8,6 +8,7 @@
 4. Diagnose from store/category to SKU, campaign, then keyword. Use the ROAS identity `ROAS = CVR × AOV / CPC` to describe which components changed. Log decomposition gives an exact additive breakdown when all values are positive, but does not establish cause.
 5. Estimate ad-attributed contribution only with cost-rate coverage for every included SKU: `attributed_sales × (1 − SKU variable_cost_rate) − ad_spend`. This is a decision proxy, not incremental or audited profit.
 6. Recommend bounded experiments. Include evidence, action, expected direction, and the metric/time window for review. Do not automatically pause advertising based on short windows or arbitrary universal thresholds.
+7. Present the decision before dense tables. Use a visual only when it clarifies a comparison or diagnostic path, and calculate it from the same totals as the narrative. Show the period, unit, denominator or formula, and a textual interpretation. For SKU contribution, a break-even ROAS proxy is `1 / (1 - variable_cost_rate)` only when the rate is below 1; it excludes fixed costs and does not establish incremental lift.
 
 ## Interpretation guardrails
 

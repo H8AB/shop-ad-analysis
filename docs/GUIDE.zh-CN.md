@@ -4,7 +4,7 @@
 
 ## 1. 先看案例
 
-打开 [中文案例报告](../examples/demo/report.zh-CN.html)。案例文件在 `examples/demo/`；[中文案例解读](../examples/demo/CASE.zh-CN.md) 解释指标与建议。所有数值均为合成数据。
+可[直接在浏览器打开中文案例报告](https://h8ab.github.io/shop-ad-analysis/examples/demo/report.zh-CN.html)。案例文件在 `examples/demo/`；[中文案例解读](../examples/demo/CASE.zh-CN.md) 解释指标与建议。所有数值均为合成数据。
 
 ## 2. 准备文件
 
@@ -70,4 +70,4 @@ node skills/shop-ad-analysis/scripts/analyze.js \
 
 ## 6. 解读报告与行动
 
-先看“数据质量与范围”，再看管理摘要、行动建议和分层明细。建议是需要验证的业务假设，不应仅凭短期归因数据直接大幅停投或加预算。尤其检查归因回补、价格促销、库存和成本率口径。
+先看决策简报，再结合广告漏斗、ROAS 分量和 SKU 卡片阅读数据质量说明。漏斗各级分别缩放，ROAS 图是指标恒等式的描述，均不能证明原因。SKU 盈亏平衡 ROAS 参考值使用 `1 / (1－可变成本率)`，未计固定费用和广告增量效果。每项建议列出建议负责人、验证动作和停止／复议条件；不应仅凭短期归因数据直接大幅停投或加预算。尤其检查归因回补、价格促销、库存和成本率口径。

@@ -21,4 +21,4 @@ npm run build
 
 Verify the browser demo in English and Chinese, confirm ZIPs have only `shop-ad-analysis/` at the top level, and check that no real business data or credentials are included. Install-test each package in its target host before claiming host-level compatibility.
 
-Publish a versioned GitHub Release with the two ZIPs. Link the [online demo](https://h8ab.github.io/shop-ad-analysis/), [usage guide](GUIDE.md), and [case study](examples/demo/CASE.md). Version 1.1 changes language defaults and presentation; it does not add marketplace API connectors.
+Publish a versioned GitHub Release with the two ZIPs. Link the [online demo](https://h8ab.github.io/shop-ad-analysis/), [usage guide](GUIDE.md), and [case study](examples/demo/CASE.md). Version 1.2 adds evidence-based visual diagnostics and action review gates; it does not add marketplace API connectors.
