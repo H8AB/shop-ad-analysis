@@ -1,37 +1,42 @@
-# 店铺广告分析 · Shop Ad Analysis
+# Shop Ad Analysis
 
-一个基于 [Agent Skills](https://agentskills.io/specification) 格式的开源技能。它把广告导出、店铺销售和 SKU 可变成本率结合起来，生成可离线打开的 HTML 决策报告；附带浏览器本地分析页面。
+An open-source [Agent Skill](https://agentskills.io/specification) that turns ecommerce ad exports, store sales, and SKU unit economics into an evidence-based HTML decision report. The default interface and report language is **English**; Simplified Chinese is optional. [中文说明](docs/README.zh-CN.md)
 
-## 立刻试用
+## Try it
 
-1. 打开 [在线体验页](https://h8ab.github.io/shop-ad-analysis/)，可直接看[案例报告](https://h8ab.github.io/shop-ad-analysis/examples/demo/report.html)。
-2. 也可下载后打开 [离线网页工具](web/ad-analysis.html)，点击“运行内置案例”；或选择自己的 `manifest.json`、`ads.csv`，按需添加 `store.csv` 与 `economics.csv`。
-3. 使用智能体时，把 [技能目录](skills/shop-ad-analysis/) 安装到宿主支持的技能位置，或使用 [Agent Skills ZIP](dist/shop-ad-analysis-agent.zip)。WorkBuddy 上传适配包使用 [专用 ZIP](dist/shop-ad-analysis-workbuddy.zip)。具体步骤见 [使用指南](GUIDE.md)。
+1. Open the [online demo](https://h8ab.github.io/shop-ad-analysis/) or the [sample HTML report](https://h8ab.github.io/shop-ad-analysis/examples/demo/report.html).
+2. To analyze files locally, open [the offline browser tool](web/ad-analysis.html). Choose English or 简体中文, run the built-in sample, or select your own `manifest.json` and `ads.csv`. Add `store.csv` and `economics.csv` for broader conclusions.
+3. For Codex or Claude, install the [Agent Skills package](dist/shop-ad-analysis-agent.zip). For WorkBuddy, use the [WorkBuddy package](dist/shop-ad-analysis-workbuddy.zip). See the [usage guide](GUIDE.md).
 
-## 能解决的问题
+## What the report answers
 
-- 广告花费、ROAS、ACOS、TACOS 与广告归因贡献估算发生了什么变化？
-- 变化主要落在点击成本、点击转化率还是广告客单价？
-- 哪些 SKU、活动或关键词值得先排查？每条建议如何复盘？
-- 数据缺了什么，哪些结论暂时不能下？
+- How did spend, ROAS, ACOS, TACOS, and estimated attributed contribution change?
+- Was the ROAS change associated with CPC, click conversion rate, or attributed order value?
+- Which SKUs, campaigns, or keywords deserve review first, and how should each action be tested?
+- Which conclusions are limited by missing or inconsistent data?
 
-报告只根据输入文件计算，不会请求平台接口或使用未经验证的类目均值。广告归因贡献估算不是净利润，也不是广告的增量收益。
+The report uses only supplied files. It does not call a marketplace API or invent category benchmarks. Estimated attributed contribution is neither audited net profit nor proof of incremental ad impact.
 
-## 项目结构
+## Language
+
+English is the default. Set `"locale": "zh-CN"` in `manifest.json`, pass `--locale zh-CN` to the CLI, or select **简体中文** in the browser tool. The sample includes both an [English report](examples/demo/report.html) and a [Chinese report](examples/demo/report.zh-CN.html). User-supplied business notes are not machine translated; optional `*_zh` manifest fields can provide Chinese wording.
+
+## Repository contents
 
 ```text
-skills/shop-ad-analysis/  可安装的 Agent Skill、分析引擎、规则和离线网页资产
-web/ad-analysis.html            可直接在浏览器打开的单文件工具
-examples/demo/                 合成案例数据、结果 JSON 和 HTML 报告
-tools/                         案例、网页和安装包构建脚本
-tests/                         计算与数据质量测试
-dist/                          Codex/Claude 通用包与 WorkBuddy 包
-GUIDE.md                       使用与字段映射指南
+skills/shop-ad-analysis/       Installable skill, analysis engine, rules, and browser asset
+web/ad-analysis.html           Standalone offline browser tool
+examples/demo/                Synthetic inputs, results, reports, and case study
+docs/                         Optional Chinese documentation
+tools/                        Reproducible sample, web, and package builders
+tests/                        Calculation and data-quality checks
+dist/                         Agent Skills and WorkBuddy ZIP packages
+GUIDE.md                      Usage and field-mapping guide
 ```
 
-## 开发与验证
+## Build and verify
 
-需要 Node.js 18+；运行时无第三方依赖。
+Node.js 18+ is required for the CLI and build scripts. No third-party runtime packages are used.
 
 ```bash
 npm test
@@ -39,12 +44,10 @@ npm run demo
 npm run build
 ```
 
-`npm run demo` 会重新生成合成数据和报告；`npm run build` 会重建单文件网页与安装包。
+`npm run demo` regenerates both report languages; `npm run build` regenerates the standalone browser tool and installation ZIPs. See the [release guide](PUBLISHING.md) for GitHub publishing details.
 
-准备发布时，请阅读 [GitHub 发布说明](PUBLISHING.md)。
+## Privacy and scope
 
-## 开源与数据边界
+The sample data is synthetic. Never commit real ad exports, private cost data, credentials, or business targets to a public repository. The browser tool processes selected files locally and has no upload endpoint. An AI host's handling of attached files is governed by that host's settings and terms.
 
-项目代码采用 MIT 许可证。案例数据完全合成，不代表任何真实店铺或平台数据。真实广告导出、成本、利润目标、令牌和凭证不得提交到公开仓库。离线网页处理选中的本地文件，不包含上传服务；智能体宿主如何处理附件仍以其服务条款和用户设置为准。
-
-首版采用标准化 CSV/JSON，不含平台 API 直连。不同平台的归因定义、报表字段、站点币种和时间范围必须在运行前核对；详见 [输入契约](skills/shop-ad-analysis/references/input-contract.md)。
+Version 1.1 accepts normalized CSV/JSON exports rather than direct marketplace API connections. Confirm attribution, currency, site, dates, and report grain before comparing platforms. The [input contract](skills/shop-ad-analysis/references/input-contract.md) defines the required fields. Code is MIT licensed.

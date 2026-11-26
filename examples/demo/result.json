@@ -1,17 +1,22 @@
 {
   "manifest": {
-    "platform": "示例平台",
+    "locale": "en",
+    "platform": "Sample Platform",
+    "platform_zh": "示例平台",
     "site": "US",
     "category": "Home & Kitchen / Storage",
     "currency": "USD",
     "timezone": "America/Los_Angeles",
-    "objective": "控制亏损 SKU，同时寻找可持续增长空间",
+    "objective": "Reduce loss-making SKU traffic while finding sustainable growth.",
+    "objective_zh": "控制亏损 SKU，同时寻找可持续增长空间",
     "business_context": {
       "target_roas": 3,
-      "notes": "现金流优先；SKU-A 库存充足，SKU-B 补货需确认。演示备注，非真实企业信息。"
+      "notes": "Cash flow first. SKU-A has sufficient inventory; confirm replenishment before scaling SKU-B. Synthetic demo context.",
+      "notes_zh": "现金流优先；SKU-A 库存充足，SKU-B 补货需确认。演示备注，非真实企业信息。"
     },
     "attribution": {
-      "label": "演示数据：点击后 7 天归因，按广告平台报表日期汇总"
+      "label": "Synthetic demo: seven-day click attribution, grouped by ad report date",
+      "label_zh": "演示数据：点击后 7 天归因，按广告平台报表日期汇总"
     },
     "periods": {
       "previous": {
@@ -61,15 +66,15 @@
   },
   "drivers": [
     {
-      "label": "点击成本",
+      "key": "cpc",
       "value": -0.18
     },
     {
-      "label": "点击转化率",
+      "key": "cvr",
       "value": -0.152
     },
     {
-      "label": "广告客单价",
+      "key": "aov",
       "value": 0.033
     }
   ],
@@ -309,18 +314,18 @@
   },
   "actions": [
     {
-      "priority": "高",
-      "title": "复核 SKU-A 的归因亏损",
-      "evidence": "本期花费 176.00 USD，归因贡献估算 -54.50 USD。",
-      "action": "检查该 SKU 的搜索词、竞价、商品页和成本结构；先小范围降低低效流量。",
-      "verify": "同口径跟踪该 SKU 的归因贡献、订单量及店铺销售。"
+      "priority": "high",
+      "title": "Review SKU-A attributed loss",
+      "evidence": "Spend 176.00 USD; estimated attributed contribution -54.50 USD.",
+      "action": "Check search terms, bids, listing, and cost structure; reduce inefficient traffic in a limited test.",
+      "verify": "Track this SKU’s attributed contribution, orders, and store sales on the same basis."
     },
     {
-      "priority": "高",
-      "title": "拆解广告回报下降",
-      "evidence": "ROAS 从 3.80 降至 2.82；最大对数变化项为点击成本；企业目标为 3.00。",
-      "action": "检查竞价、投放位置和竞争加剧的搜索词。",
-      "verify": "保持其他主要条件稳定，按相同归因窗口复盘下一周期。"
+      "priority": "high",
+      "title": "Diagnose the ROAS decline",
+      "evidence": "ROAS fell from 3.80 to 2.82; largest log-change component: Cost per click; company target 3.00.",
+      "action": "Review bids, placements, and search terms with rising competition.",
+      "verify": "Keep major conditions stable and review the next period using the same attribution window."
     }
   ]
 }

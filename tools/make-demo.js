@@ -2,7 +2,7 @@
 const fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'../examples/demo');
 fs.mkdirSync(root,{recursive:true});
-const manifest={platform:'示例平台',site:'US',category:'Home & Kitchen / Storage',currency:'USD',timezone:'America/Los_Angeles',objective:'控制亏损 SKU，同时寻找可持续增长空间',business_context:{target_roas:3,notes:'现金流优先；SKU-A 库存充足，SKU-B 补货需确认。演示备注，非真实企业信息。'},attribution:{label:'演示数据：点击后 7 天归因，按广告平台报表日期汇总'},periods:{previous:{start:'2026-11-05',end:'2026-11-11'},current:{start:'2026-11-12',end:'2026-11-18'}},min_clicks_for_directional:30};
+const manifest={locale:'en',platform:'Sample Platform',platform_zh:'示例平台',site:'US',category:'Home & Kitchen / Storage',currency:'USD',timezone:'America/Los_Angeles',objective:'Reduce loss-making SKU traffic while finding sustainable growth.',objective_zh:'控制亏损 SKU，同时寻找可持续增长空间',business_context:{target_roas:3,notes:'Cash flow first. SKU-A has sufficient inventory; confirm replenishment before scaling SKU-B. Synthetic demo context.',notes_zh:'现金流优先；SKU-A 库存充足，SKU-B 补货需确认。演示备注，非真实企业信息。'},attribution:{label:'Synthetic demo: seven-day click attribution, grouped by ad report date',label_zh:'演示数据：点击后 7 天归因，按广告平台报表日期汇总'},periods:{previous:{start:'2026-11-05',end:'2026-11-11'},current:{start:'2026-11-12',end:'2026-11-18'}},min_clicks_for_directional:30};
 fs.writeFileSync(path.join(root,'manifest.json'),JSON.stringify(manifest,null,2)+'\n');
 function csv(file,headers,rows){const q=v=>{const s=String(v??'');return /[",\r\n]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s;};fs.writeFileSync(path.join(root,file),headers.join(',')+'\n'+rows.map(r=>headers.map(h=>q(r[h])).join(',')).join('\n')+'\n');}
 const ads=[],store=[];

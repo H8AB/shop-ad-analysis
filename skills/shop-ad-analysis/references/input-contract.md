@@ -2,7 +2,7 @@
 
 ## Files
 
-- `manifest.json`: platform, site, category, currency, timezone, business objective, attribution label, periods (`current` required, `previous` optional), optional `business_context` (`target_roas`, `notes`), `column_map`, and `min_clicks_for_directional`.
+- `manifest.json`: platform, site, category, currency, timezone, business objective, attribution label, periods (`current` required, `previous` optional), optional `locale` (`en` default or `zh-CN`), `business_context` (`target_roas`, `notes`), `column_map`, and `min_clicks_for_directional`. Optional `platform_zh`, `objective_zh`, `attribution.label_zh`, and `business_context.notes_zh` preserve supplied Chinese context when Chinese output is selected.
 - `ads.csv`: one row per export grain. Required canonical columns: `date,campaign,sku,impressions,clicks,spend,attributed_orders,attributed_sales`. Optional: `ad_group,keyword`. Do not mix cumulative and daily rows.
 - `store.csv` (optional): one row per `date+sku`; `date,sku,store_sales`, optional `store_orders,inventory_units`. `store_sales` must cover the same site, currency, and order-date scope as the report.
 - `economics.csv` (optional): one row per `sku`; `sku,variable_cost_rate`. Rate is decimal (`0.65` means 65%). Include product cost, platform and fulfillment fees, discounts, and expected return loss according to company policy; disclose exclusions. No cost rate is inferred from category averages.

@@ -5,14 +5,14 @@ description: Analyze shop advertising exports using platform, market, category, 
 
 # Shop ad analysis
 
-Use this skill when a user asks to diagnose store advertising data or turn ad exports into business decisions. Default deliverable: a standalone HTML report. The skill works with supplied CSV/JSON exports and does not require account credentials or live APIs.
+Use this skill when a user asks to diagnose store advertising data or turn ad exports into business decisions. Default deliverable: a standalone English HTML report. Set `manifest.locale` to `zh-CN` or pass `--locale zh-CN` for an optional Chinese report. The skill works with supplied CSV/JSON exports and does not require account credentials or live APIs.
 
 ## Workflow
 
 1. Read [input contract](references/input-contract.md). Establish platform, site, category, time windows, currency, timezone, attribution definition, and business objective. If any essential field is unknown, ask only for that field or state a limited assumption in the report.
 2. Map source columns into the canonical schema. Keep the original exports unchanged. For a new platform, document its attribution and field mappings; do not silently treat similarly named metrics as equivalent.
 3. Validate grain, date coverage, duplicates, currency, missing values, and the availability of store sales and SKU cost rates. Stop on values that would corrupt totals. Report other gaps in the HTML.
-4. Run `node scripts/analyze.js --manifest manifest.json --ads ads.csv --store store.csv --economics economics.csv --out report.html`. The store and economics options are optional; missing files narrow the conclusions. When Node is unavailable, follow the formulas in [analysis rules](references/analysis-rules.md) and generate equivalent HTML, labeling any unverified calculation.
+4. Run `node scripts/analyze.js --manifest manifest.json --ads ads.csv --store store.csv --economics economics.csv --out report.html`. The store and economics options are optional; missing files narrow the conclusions. If the user asks for Chinese, add `--locale zh-CN`. When Node is unavailable, follow the formulas in [analysis rules](references/analysis-rules.md) and generate equivalent HTML in the requested language, labeling any unverified calculation.
 5. Interpret the result with [analysis rules](references/analysis-rules.md) and the platform/site/category context in [context guide](references/context-guide.md). Separate observation, possible explanation, and action. Every material recommendation needs a metric, decision condition, and verification method. User-provided targets take precedence over generic thresholds.
 6. Check the generated HTML opens, shows the intended platform/site/category and time windows, and includes data quality notes. Never present ad-attributed sales as proven incremental sales or contribution estimate as audited net profit.
 

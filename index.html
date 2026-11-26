@@ -1,30 +1,28 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>店铺广告分析</title>
+  <title>Shop Ad Analysis</title>
   <style>
-    :root{font-family:system-ui,-apple-system,"PingFang SC",sans-serif;color:#17212e;background:#eef3f8}
+    :root{font-family:system-ui,-apple-system,"Segoe UI","PingFang SC",sans-serif;color:#17212e;background:#eef3f8}
     *{box-sizing:border-box}body{margin:0}header{background:#11243a;color:#fff;padding:64px 24px}
     .wrap{max-width:900px;margin:auto}h1{font-size:42px;margin:0 0 14px}p{line-height:1.7}
     header p{color:#c6d8e7;font-size:18px}main{max-width:900px;margin:28px auto;padding:0 24px}
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
     a.card{display:block;background:white;border:1px solid #dce5ed;border-radius:14px;padding:24px;text-decoration:none;color:inherit;box-shadow:0 3px 14px #17212e0d}
     a.card:hover{border-color:#2979a9}a.card strong{display:block;font-size:20px;color:#155c8a;margin-bottom:10px}
-    a.card span{color:#536c82}footer{color:#66798c;font-size:13px;margin:28px 0}
+    a.card span{color:#536c82}.lang{float:right}.lang select{padding:8px;border-radius:6px}footer{color:#66798c;font-size:13px;margin:28px 0}
   </style>
 </head>
 <body>
-  <header><div class="wrap"><h1>店铺广告分析</h1><p>把广告、店铺销售和商品成本数据，整理成可验证的 HTML 决策报告。</p></div></header>
-  <main>
-    <div class="grid">
-      <a class="card" href="web/ad-analysis.html"><strong>立即体验</strong><span>在浏览器本地选择数据文件，生成并下载报告；可先运行内置案例。</span></a>
-      <a class="card" href="examples/demo/report.html"><strong>查看案例报告</strong><span>直接阅读合成案例的完整 HTML 分析结果。</span></a>
-      <a class="card" href="https://github.com/H8AB/shop-ad-analysis/blob/main/GUIDE.md"><strong>阅读使用指南</strong><span>了解字段要求，以及 Codex、WorkBuddy、Claude 的安装方法。</span></a>
-      <a class="card" href="https://github.com/H8AB/shop-ad-analysis/releases/tag/v1.0.0"><strong>下载技能包</strong><span>获取通用 Agent Skills 包或 WorkBuddy 适配包。</span></a>
-    </div>
-    <footer>项目开源于 GitHub。在线体验页面在你的浏览器中处理所选文件，不包含上传服务。</footer>
-  </main>
+  <header><div class="wrap"><div class="lang"><label for="locale" data-en="Language" data-zh="语言">Language</label> <select id="locale"><option value="en">English</option><option value="zh-CN">简体中文</option></select></div><h1 data-en="Shop Ad Analysis" data-zh="店铺广告分析">Shop Ad Analysis</h1><p data-en="Turn ad exports, store sales, and SKU costs into an evidence-based HTML decision report." data-zh="把广告、店铺销售和商品成本数据，整理成可验证的 HTML 决策报告。">Turn ad exports, store sales, and SKU costs into an evidence-based HTML decision report.</p></div></header>
+  <main><div class="grid">
+    <a class="card" href="web/ad-analysis.html"><strong data-en="Try the browser tool" data-zh="立即体验">Try the browser tool</strong><span data-en="Analyze files in your browser, or run the built-in sample. Choose English or Simplified Chinese." data-zh="在浏览器本地选择数据文件，或运行内置案例；可选英文或简体中文。">Analyze files in your browser, or run the built-in sample. Choose English or Simplified Chinese.</span></a>
+    <a class="card" id="reportLink" href="examples/demo/report.html" data-href-en="examples/demo/report.html" data-href-zh="examples/demo/report.zh-CN.html"><strong data-en="View the sample report" data-zh="查看案例报告">View the sample report</strong><span data-en="Read a complete HTML analysis based on synthetic data." data-zh="直接阅读合成案例的完整 HTML 分析结果。">Read a complete HTML analysis based on synthetic data.</span></a>
+    <a class="card" id="guideLink" href="https://github.com/H8AB/shop-ad-analysis/blob/main/GUIDE.md" data-href-en="https://github.com/H8AB/shop-ad-analysis/blob/main/GUIDE.md" data-href-zh="https://github.com/H8AB/shop-ad-analysis/blob/main/docs/GUIDE.zh-CN.md"><strong data-en="Read the usage guide" data-zh="阅读使用指南">Read the usage guide</strong><span data-en="Learn the file contract and how to install the skill in Codex, WorkBuddy, and Claude." data-zh="了解字段要求，以及 Codex、WorkBuddy、Claude 的安装方法。">Learn the file contract and how to install the skill in Codex, WorkBuddy, and Claude.</span></a>
+    <a class="card" href="https://github.com/H8AB/shop-ad-analysis/releases/tag/v1.1.0"><strong data-en="Download the skill" data-zh="下载技能包">Download the skill</strong><span data-en="Get the Agent Skills or WorkBuddy ZIP package." data-zh="获取通用 Agent Skills 包或 WorkBuddy 适配包。">Get the Agent Skills or WorkBuddy ZIP package.</span></a>
+  </div><footer data-en="Open source on GitHub. Selected files stay in your browser; this site has no upload service." data-zh="项目开源于 GitHub。所选文件留在你的浏览器中；本站不包含上传服务。">Open source on GitHub. Selected files stay in your browser; this site has no upload service.</footer></main>
+  <script>document.getElementById('locale').onchange=function(){const zh=this.value==='zh-CN';document.documentElement.lang=zh?'zh-CN':'en';document.title=zh?'店铺广告分析':'Shop Ad Analysis';document.querySelectorAll('[data-en]').forEach(el=>el.textContent=el.dataset[zh?'zh':'en']);document.querySelectorAll('[data-href-en]').forEach(el=>el.href=el.dataset[zh?'hrefZh':'hrefEn']);};</script>
 </body>
 </html>

@@ -1,16 +1,21 @@
 {
-  "platform": "示例平台",
+  "locale": "en",
+  "platform": "Sample Platform",
+  "platform_zh": "示例平台",
   "site": "US",
   "category": "Home & Kitchen / Storage",
   "currency": "USD",
   "timezone": "America/Los_Angeles",
-  "objective": "控制亏损 SKU，同时寻找可持续增长空间",
+  "objective": "Reduce loss-making SKU traffic while finding sustainable growth.",
+  "objective_zh": "控制亏损 SKU，同时寻找可持续增长空间",
   "business_context": {
     "target_roas": 3,
-    "notes": "现金流优先；SKU-A 库存充足，SKU-B 补货需确认。演示备注，非真实企业信息。"
+    "notes": "Cash flow first. SKU-A has sufficient inventory; confirm replenishment before scaling SKU-B. Synthetic demo context.",
+    "notes_zh": "现金流优先；SKU-A 库存充足，SKU-B 补货需确认。演示备注，非真实企业信息。"
   },
   "attribution": {
-    "label": "演示数据：点击后 7 天归因，按广告平台报表日期汇总"
+    "label": "Synthetic demo: seven-day click attribution, grouped by ad report date",
+    "label_zh": "演示数据：点击后 7 天归因，按广告平台报表日期汇总"
   },
   "periods": {
     "previous": {

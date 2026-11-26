@@ -12,9 +12,10 @@ test('demo reconciles totals, decomposition, and SKU profit',()=>{
   assert.ok(Math.abs(r.drivers.reduce((n,x)=>n+x.value,0)-Math.log(r.current.roas/r.previous.roas))<0.002);
   assert.ok(r.actions.some(x=>x.title.includes('SKU-A')));
 });
-test('missing economics suppresses aggregate contribution',()=>{const i=input();i.economics=[];const r=analyze(i);assert.equal(r.current.contribution,null);assert.ok(r.quality.some(x=>x.includes('成本率')));});
-test('store duplicate cannot inflate TACOS denominator',()=>{const i=input();i.store.push({...i.store[0]});assert.throws(()=>analyze(i),/重复/);});
-test('exact ad duplicate cannot inflate ad totals',()=>{const i=input();i.ads.push({...i.ads[0]});assert.throws(()=>analyze(i),/重复/);});
-test('partial store data suppresses TACOS',()=>{const i=input();i.store.pop();const r=analyze(i);assert.equal(r.current.tacos,null);assert.ok(r.quality.some(x=>x.includes('不计算 TACOS')));});
-test('invalid calendar date is rejected',()=>{const i=input();i.manifest.periods.current.end='2026-11-31';assert.throws(()=>analyze(i),/日期范围无效/);});
+test('missing economics suppresses aggregate contribution',()=>{const i=input();i.economics=[];const r=analyze(i);assert.equal(r.current.contribution,null);assert.ok(r.quality.some(x=>x.includes('Missing SKU cost rates')));});
+test('store duplicate cannot inflate TACOS denominator',()=>{const i=input();i.store.push({...i.store[0]});assert.throws(()=>analyze(i),/duplicates a date/);});
+test('exact ad duplicate cannot inflate ad totals',()=>{const i=input();i.ads.push({...i.ads[0]});assert.throws(()=>analyze(i),/exactly duplicates/);});
+test('partial store data suppresses TACOS',()=>{const i=input();i.store.pop();const r=analyze(i);assert.equal(r.current.tacos,null);assert.ok(r.quality.some(x=>x.includes('TACOS is suppressed')));});
+test('invalid calendar date is rejected',()=>{const i=input();i.manifest.periods.current.end='2026-11-31';assert.throws(()=>analyze(i),/date range is invalid/);});
 test('CSV quotes and report HTML escaping',()=>{assert.equal(parseCsv('a,b\n"x,y","z""q"\n')[0].a,'x,y');const i=input();i.manifest.category='<script>alert(1)</script>';const html=renderHtml(analyze(i));assert.ok(!html.includes('<script>alert(1)</script>'));assert.ok(html.includes('&lt;script&gt;'));});
+test('English is default and Chinese is optional with identical calculations',()=>{const en=analyze(input());const zhInput=input();zhInput.manifest.locale='zh-CN';const zh=analyze(zhInput);assert.equal(en.current.roas,zh.current.roas);assert.equal(en.current.contribution,zh.current.contribution);assert.match(renderHtml(en),/<html lang="en">/);assert.match(renderHtml(en),/Executive summary/);assert.match(renderHtml(en),/vs previous \+9\.2 pp/);assert.match(renderHtml(zh),/<html lang="zh-CN">/);assert.match(renderHtml(zh),/管理摘要/);assert.match(renderHtml(zh),/较前期 \+9\.2 个百分点/);assert.ok(zh.actions.some(x=>x.title.includes('归因亏损')));});

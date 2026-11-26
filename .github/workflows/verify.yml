@@ -13,4 +13,4 @@ jobs:
       - run: npm test
       - run: npm run demo
       - run: npm run build
-      - run: git diff --exit-code -- examples/demo/report.html examples/demo/result.json web/ad-analysis.html skills/shop-ad-analysis/assets/ad-analysis.html
+      - run: git diff --exit-code -- examples/demo/report.html examples/demo/report.zh-CN.html examples/demo/result.json web/ad-analysis.html skills/shop-ad-analysis/assets/ad-analysis.html

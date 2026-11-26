@@ -1,16 +1,18 @@
-# 演示案例：花费增加，但店铺销售额未增长
+# Sample case: higher ad spend without store sales growth
 
-本案例为完全合成的美国站收纳品类店铺数据，平台名称特意写为“示例平台”，不代表任何真实平台的归因定义或行业基准。对比两个各 7 天的周期，输入包含广告、店铺销售额、SKU 可变成本率和企业目标。
+[中文案例解读](CASE.zh-CN.md)
 
-## 观察
+This fully synthetic case represents a US-site storage category store on a fictional “Sample Platform.” It is not a real marketplace benchmark. Two seven-day periods are compared using ad exports, store sales, SKU variable cost rates, and a company ROAS target.
 
-- 本期广告花费从 200 增至 266 USD，广告归因销售额从 760 降至 750 USD；ROAS 从 3.80 降至 2.82。
-- 同期店铺销售额均为 1,120 USD；TACOS 从 17.9% 升至 23.8%。这说明广告花费占同期店铺销售额的比例上升，不能单独证明广告没有增量效果。
-- 点击成本从约 1.11 升至 1.33 USD，点击转化率从 12.2% 降至 10.5%。ROAS 恒等式的对数分解中，点击成本变化是最大负向项，转化率次之。
-- SKU-A 本期广告花费 176 USD、归因销售额 270 USD，按该 SKU 55% 的可变成本率估算，归因贡献为 −54.50 USD；SKU-B 仍有正向归因贡献。全店归因贡献估算为 47.50 USD，较前期 122 USD 下降。
+## Observations
 
-## 决策
+- Ad spend rose from USD 200 to USD 266 while attributed ad sales slipped from USD 760 to USD 750. ROAS fell from 3.80 to 2.82.
+- Store sales stayed at USD 1,120 in both periods. TACOS rose from 17.9% to 23.8%. This says spend took a larger share of same-period store sales; it does not prove the ads had no incremental effect.
+- CPC rose from about USD 1.11 to USD 1.33, while click conversion rate fell from 12.2% to 10.5%. In the ROAS identity's log decomposition, CPC is the largest negative component, followed by conversion rate.
+- SKU-A spent USD 176 and generated USD 270 of attributed sales. At its 55% variable cost rate, estimated attributed contribution was **−USD 54.50**. SKU-B remained positive. The store-wide estimate fell from USD 122 to USD 47.50.
 
-先针对 SKU-A 检查搜索词、出价、商品页和成本构成，做小范围调整；同时复核点击成本上升的活动与投放位置。SKU-B 是否增预算，要先确认补货与履约能力。下一周期沿用相同的站点、币种和归因口径，复盘 SKU 归因贡献、订单与店铺销售额。
+## Decision and test
 
-以上是指标诊断和验证计划，不是因果归因结论。完整结果见 `report.html`，结构化计算见 `result.json`。
+Review SKU-A's search terms, bids, listing, and cost assumptions first; make a limited change. Check which campaign or placement drove the higher CPC. Confirm replenishment before scaling SKU-B. In the next comparable period, review SKU contribution, orders, and store sales using the same attribution basis.
+
+This is a diagnostic plan, not a causal proof. See the [English report](report.html), [Chinese report](report.zh-CN.html), and [structured result](result.json).
