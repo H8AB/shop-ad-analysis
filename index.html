@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>店铺广告分析</title>
+  <style>
+    :root{font-family:system-ui,-apple-system,"PingFang SC",sans-serif;color:#17212e;background:#eef3f8}
+    *{box-sizing:border-box}body{margin:0}header{background:#11243a;color:#fff;padding:64px 24px}
+    .wrap{max-width:900px;margin:auto}h1{font-size:42px;margin:0 0 14px}p{line-height:1.7}
+    header p{color:#c6d8e7;font-size:18px}main{max-width:900px;margin:28px auto;padding:0 24px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+    a.card{display:block;background:white;border:1px solid #dce5ed;border-radius:14px;padding:24px;text-decoration:none;color:inherit;box-shadow:0 3px 14px #17212e0d}
+    a.card:hover{border-color:#2979a9}a.card strong{display:block;font-size:20px;color:#155c8a;margin-bottom:10px}
+    a.card span{color:#536c82}footer{color:#66798c;font-size:13px;margin:28px 0}
+  </style>
+</head>
+<body>
+  <header><div class="wrap"><h1>店铺广告分析</h1><p>把广告、店铺销售和商品成本数据，整理成可验证的 HTML 决策报告。</p></div></header>
+  <main>
+    <div class="grid">
+      <a class="card" href="web/ad-analysis.html"><strong>立即体验</strong><span>在浏览器本地选择数据文件，生成并下载报告；可先运行内置案例。</span></a>
+      <a class="card" href="examples/demo/report.html"><strong>查看案例报告</strong><span>直接阅读合成案例的完整 HTML 分析结果。</span></a>
+      <a class="card" href="https://github.com/H8AB/shop-ad-analysis/blob/main/GUIDE.md"><strong>阅读使用指南</strong><span>了解字段要求，以及 Codex、WorkBuddy、Claude 的安装方法。</span></a>
+      <a class="card" href="https://github.com/H8AB/shop-ad-analysis/releases/tag/v1.0.0"><strong>下载技能包</strong><span>获取通用 Agent Skills 包或 WorkBuddy 适配包。</span></a>
+    </div>
+    <footer>项目开源于 GitHub。在线体验页面在你的浏览器中处理所选文件，不包含上传服务。</footer>
+  </main>
+</body>
+</html>

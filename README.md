@@ -4,8 +4,8 @@
 
 ## 立刻试用
 
-1. 打开 [案例报告](examples/demo/report.html) 看输出效果。
-2. 打开 [离线网页工具](web/ad-analysis.html)，点击“运行内置案例”；也可选择自己的 `manifest.json`、`ads.csv`，并按需添加 `store.csv` 与 `economics.csv`。
+1. 打开 [在线体验页](https://h8ab.github.io/shop-ad-analysis/)，可直接看[案例报告](https://h8ab.github.io/shop-ad-analysis/examples/demo/report.html)。
+2. 也可下载后打开 [离线网页工具](web/ad-analysis.html)，点击“运行内置案例”；或选择自己的 `manifest.json`、`ads.csv`，按需添加 `store.csv` 与 `economics.csv`。
 3. 使用智能体时，把 [技能目录](skills/shop-ad-analysis/) 安装到宿主支持的技能位置，或使用 [Agent Skills ZIP](dist/shop-ad-analysis-agent.zip)。WorkBuddy 上传适配包使用 [专用 ZIP](dist/shop-ad-analysis-workbuddy.zip)。具体步骤见 [使用指南](GUIDE.md)。
 
 ## 能解决的问题
