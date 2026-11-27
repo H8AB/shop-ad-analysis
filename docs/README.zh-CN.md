@@ -1,5 +1,13 @@
 # 店铺广告分析 · 中文说明
 
+## 先这样用
+
+把平台导出的广告报表发给我，告诉我店铺所在站点、想比较的时间，以及你最担心的问题。比如：“这周广告花费涨了，订单却没跟上，帮我看看原因。”有商品成本或全店销售数据时一并提供，结论会更完整。
+
+我会先用几句话讲清主要变化、哪些判断有数据支持、下一步先试什么，再附图表报告。你可以继续问“只看这个商品”“把建议改成我能交给投放同事的清单”。
+
+不需要准备 JSON 或账号密码。经营报表属于私有数据，公开示例只用合成数据。
+
 [English README](../README.md)
 
 一个基于 [Agent Skills](https://agentskills.io/specification) 格式的开源技能。它把广告导出、店铺销售和 SKU 可变成本率结合起来，生成可离线打开的 HTML 决策报告；附带浏览器本地分析页面。
@@ -7,7 +15,7 @@
 ## 立刻试用
 
 1. 打开 [在线体验页](https://h8ab.github.io/shop-ad-analysis/)，可直接看[案例报告](https://h8ab.github.io/shop-ad-analysis/examples/demo/report.zh-CN.html)。
-2. 也可下载后打开 [离线网页工具](../web/ad-analysis.html)，点击“运行内置案例”；或选择自己的 `manifest.json`、`ads.csv`，按需添加 `store.csv` 与 `economics.csv`。
+2. 也可下载后打开 [离线网页工具](../web/ad-analysis.html)，先点“先看示例报告”；分析自己的店铺时，填写平台、站点、品类和币种，选择导出的广告 CSV。全店销售和商品成本文件可以按需补充。
 3. 使用智能体时，把 [技能目录](../skills/shop-ad-analysis/) 安装到宿主支持的技能位置，或使用 [Agent Skills ZIP](../dist/shop-ad-analysis-agent.zip)。WorkBuddy 上传适配包使用 [专用 ZIP](../dist/shop-ad-analysis-workbuddy.zip)。具体步骤见 [使用指南](GUIDE.zh-CN.md)。
 
 ## 能解决的问题

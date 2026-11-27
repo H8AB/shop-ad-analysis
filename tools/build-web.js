@@ -1,24 +1,24 @@
 'use strict';
-const fs=require('node:fs'),path=require('node:path');
-const root=path.resolve(__dirname,'..'),skill=path.join(root,'skills/shop-ad-analysis'),demo=path.join(root,'examples/demo');
-const engine=fs.readFileSync(path.join(skill,'scripts/engine.js'),'utf8').replace(/<\/script/gi,'<\\/script');
-const sample={manifest:JSON.parse(fs.readFileSync(path.join(demo,'manifest.json'),'utf8')),ads:fs.readFileSync(path.join(demo,'ads.csv'),'utf8'),store:fs.readFileSync(path.join(demo,'store.csv'),'utf8'),economics:fs.readFileSync(path.join(demo,'economics.csv'),'utf8')};
-const sampleJson=JSON.stringify(sample).replace(/</g,'\\u003c');
-const html=`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Shop Ad Analysis · Offline Studio</title><style>:root{font-family:system-ui,-apple-system,"Segoe UI","PingFang SC",sans-serif;color:#17212e;background:#eef3f8}*{box-sizing:border-box}body{margin:0}header{background:#11243a;color:#fff;padding:32px max(20px,calc((100vw - 1050px)/2))}header h1{margin:6px 0}header p{color:#c4d4e4}main{max-width:1050px;margin:20px auto 60px;padding:0 20px}.card{background:#fff;border:1px solid #d7e1eb;border-radius:14px;padding:24px;margin:16px 0;box-shadow:0 3px 18px #17212e0d}.files{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:14px}.file{background:#f7fafc;border:1px dashed #a5bbce;border-radius:10px;padding:15px}.file label{display:block;font-weight:600;margin-bottom:8px}.file small{color:#60758a}.file input{max-width:100%}button{border:0;border-radius:9px;background:#16608e;color:white;padding:12px 18px;font-size:15px;cursor:pointer;margin:10px 8px 0 0}button.secondary{background:#e7eff5;color:#164365}button:disabled{opacity:.45;cursor:not-allowed}#status{white-space:pre-wrap;line-height:1.5;color:#425a70}iframe{width:100%;height:720px;border:1px solid #d7e1eb;border-radius:8px}footer{font-size:12px;color:#60758a}.lang{float:right;color:#fff}.lang select{padding:7px;border-radius:6px;margin-left:6px}</style></head><body><header><div class="lang"><label for="locale" data-i18n="language">Language</label><select id="locale"><option value="en">English</option><option value="zh-CN">简体中文</option></select></div><p>SHOP AD ANALYSIS · OFFLINE</p><h1 data-i18n="title">Shop Ad Analysis</h1><p data-i18n="subtitle">Analyze local exports and download a standalone HTML decision report.</p></header><main><div class="card"><h2 data-i18n="choose">Choose data files</h2><div class="files"><div class="file"><label>manifest.json *</label><input id="manifest" type="file" accept=".json,application/json"><small data-i18n="manifest">Platform, site, dates, and attribution</small></div><div class="file"><label>ads.csv *</label><input id="ads" type="file" accept=".csv,text/csv"><small data-i18n="ads">Impressions, clicks, spend, and attributed sales</small></div><div class="file"><label>store.csv</label><input id="store" type="file" accept=".csv,text/csv"><small data-i18n="store">Same-period store sales for TACOS</small></div><div class="file"><label>economics.csv</label><input id="economics" type="file" accept=".csv,text/csv"><small data-i18n="economics">SKU variable cost rates for contribution estimates</small></div></div><button id="run" data-i18n="run">Generate report</button><button id="demo" class="secondary" data-i18n="demo">Run sample</button><button id="download" disabled data-i18n="download">Download HTML report</button><p id="status" role="status">No analysis yet. Files are processed in this browser.</p></div><div class="card"><h2 data-i18n="preview">Report preview</h2><iframe id="previewFrame" title="Report preview" sandbox=""></iframe></div><footer data-i18n="footer">Open-source Shop Ad Analysis · Local file processing · No upload service</footer></main><script>${engine}</script><script>
-const sample=${sampleJson};
-const ui={language:['Language','语言'],title:['Shop Ad Analysis','店铺广告分析'],subtitle:['Analyze local exports and download a standalone HTML decision report.','在浏览器本地读取文件，生成可离线打开的 HTML 决策报告。'],choose:['Choose data files','选择数据文件'],manifest:['Platform, site, dates, and attribution','平台、站点、周期、归因口径'],ads:['Impressions, clicks, spend, and attributed sales','广告展示、点击、花费和归因销售'],store:['Same-period store sales for TACOS','同期店铺销售额，用于 TACOS'],economics:['SKU variable cost rates for contribution estimates','SKU 可变成本率，用于归因贡献估算'],run:['Generate report','生成报告'],demo:['Run sample','运行内置案例'],download:['Download HTML report','下载 HTML 报告'],preview:['Report preview','报告预览'],footer:['Open-source Shop Ad Analysis · Local file processing · No upload service','开源项目 Shop Ad Analysis · 浏览器本地处理文件 · 无上传服务'],idle:['No analysis yet. Files are processed in this browser.','尚未分析。所有文件在当前浏览器页面中处理。'],missing:['Select manifest.json and ads.csv first.','请先选择 manifest.json 和 ads.csv。']};
-const $=id=>document.getElementById(id);let reportHtml='',loaded=null;
-const lang=()=>$('locale').value;
-function tr(key){return ui[key][lang()==='zh-CN'?1:0];}
-function setLanguage(){document.documentElement.lang=lang();document.title=lang()==='zh-CN'?'店铺广告分析 · 本地版':'Shop Ad Analysis · Offline Studio';document.querySelectorAll('[data-i18n]').forEach(el=>el.textContent=tr(el.dataset.i18n));$('previewFrame').title=tr('preview');if(loaded)show(loaded);else $('status').textContent=tr('idle');}
-async function read(id){const f=$(id).files[0];return f?await f.text():null;}
-function show(input){const api=globalThis.ShopAdAnalysis;input.manifest.locale=lang();const report=api.analyze(input);reportHtml=api.renderHtml(report);$('previewFrame').srcdoc=reportHtml;$('download').disabled=false;$('status').textContent=lang()==='zh-CN'?'分析完成：广告 '+report.source_counts.ads+' 行；数据提示 '+report.quality.length+' 条。':'Analysis complete: '+report.source_counts.ads+' ad rows; '+report.quality.length+' data notes.';loaded=input;}
-function handle(fn){Promise.resolve().then(fn).catch(e=>{$('status').textContent=(lang()==='zh-CN'?'分析失败：':'Analysis failed: ')+e.message;$('download').disabled=true;});}
-$('run').onclick=()=>handle(async()=>{const manifest=await read('manifest'),ads=await read('ads');if(!manifest||!ads)throw new Error(tr('missing'));const store=await read('store'),economics=await read('economics'),api=globalThis.ShopAdAnalysis;show({manifest:JSON.parse(manifest),ads:api.parseCsv(ads,lang()),store:store?api.parseCsv(store,lang()):[],economics:economics?api.parseCsv(economics,lang()):[]});});
-$('demo').onclick=()=>handle(()=>{const api=globalThis.ShopAdAnalysis;show({manifest:{...sample.manifest},ads:api.parseCsv(sample.ads,lang()),store:api.parseCsv(sample.store,lang()),economics:api.parseCsv(sample.economics,lang())});});
-$('locale').onchange=setLanguage;
-$('download').onclick=()=>{const blob=new Blob([reportHtml],{type:'text/html;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='shop-ad-report-'+lang()+'.html';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
-</script></body></html>`;
-fs.writeFileSync(path.join(root,'web/ad-analysis.html'),html);
-fs.writeFileSync(path.join(skill,'assets/ad-analysis.html'),html);
+const fs = require('node:fs');
+const path = require('node:path');
+const root = path.resolve(__dirname, '..');
+const skill = path.join(root, 'skills/shop-ad-analysis');
+const demo = path.join(root, 'examples/demo');
+const engine = fs.readFileSync(path.join(skill, 'scripts/engine.js'), 'utf8').replace(/<\/script/gi, '<\\/script');
+const sample = {
+  manifest: JSON.parse(fs.readFileSync(path.join(demo, 'manifest.json'), 'utf8')),
+  ads: fs.readFileSync(path.join(demo, 'ads.csv'), 'utf8'),
+  store: fs.readFileSync(path.join(demo, 'store.csv'), 'utf8'),
+  economics: fs.readFileSync(path.join(demo, 'economics.csv'), 'utf8')
+};
+const sampleJson = JSON.stringify(sample).replace(/</g, '\\u003c');
+const template = fs.readFileSync(path.join(root, 'tools/ad-analysis.template.html'), 'utf8');
+if (!template.includes('/*__ENGINE__*/') || !template.includes('/*__SAMPLE__*/')) {
+  throw new Error('Browser template markers are missing');
+}
+const html = template
+  .replace('/*__ENGINE__*/', engine)
+  .replace('/*__SAMPLE__*/', `const sample=${sampleJson};`);
+fs.writeFileSync(path.join(root, 'web/ad-analysis.html'), html);
+fs.writeFileSync(path.join(skill, 'assets/ad-analysis.html'), html);
 console.log('Built bilingual standalone web/ad-analysis.html');

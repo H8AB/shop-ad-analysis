@@ -5,7 +5,7 @@ description: Analyze shop advertising exports using platform, market, category, 
 
 # Shop ad analysis
 
-Use this skill when a user asks to diagnose store advertising data or turn ad exports into business decisions. Default deliverable: a standalone English HTML report. Set `manifest.locale` to `zh-CN` or pass `--locale zh-CN` for an optional Chinese report. The skill works with supplied CSV/JSON exports and does not require account credentials or live APIs.
+Use this skill when a user asks to diagnose store advertising data or turn ad exports into business decisions. First explain what changed, what the data supports, and what to try next in plain language; then offer a standalone HTML report. Do not ask ordinary users to create JSON or run commands. Set `manifest.locale` to `zh-CN` or pass `--locale zh-CN` when Chinese is requested. The skill works with supplied exports and does not require account credentials or live APIs.
 
 ## Workflow
 
@@ -18,7 +18,7 @@ Use this skill when a user asks to diagnose store advertising data or turn ad ex
 
 ## Data and privacy
 
-Treat exports and business context as private. Do not upload them to a third party or include them in a public repository without the user's authorization. Synthetic examples in this package are safe for demonstration. Do not add credentials to a manifest, report, or log.
+Treat exports and business context as private. Do not upload them to a third party or include them in a public repository without the user's authorization. Synthetic examples in this package are safe for demonstration. Public examples and trial suggestions must never use a user's account details, chat history, private files, contacts, or local paths. Check charts and attachments before sharing. Do not add credentials to a manifest, report, or log.
 
 ## Runtime variants
 
